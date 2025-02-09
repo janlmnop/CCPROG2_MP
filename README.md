@@ -6,6 +6,7 @@
 - alsoooo is it ok if we make another file for each main function and just call that? or should we only have one file (.c) for the whole project?
 
 
+
 ⋆⁺｡˚⋆˙‧₊☽ PROGRESS SO FAR ☾₊‧˙⋆˚｡⁺⋆
 - Janelle: selectComPetDium
 - Nyka: 

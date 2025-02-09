@@ -1,5 +1,4 @@
 ⋆⁺｡˚⋆˙‧₊☽ SOME NOTES ☾₊‧˙⋆˚｡⁺⋆
-
 - choose any function to work on :p
 - selectBattle > selectPlayer
   - not sure if we should implement pointers per player, and not sure how to implement that yet if ever (hence, why I might delay it a lil bit hehe)

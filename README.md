@@ -8,5 +8,5 @@
 
 
 ⋆⁺｡˚⋆˙‧₊☽ PROGRESS SO FAR ☾₊‧˙⋆˚｡⁺⋆
-> Janelle: selectComPetDium
-> Nyka: 
+- Janelle: selectComPetDium
+- Nyka: 

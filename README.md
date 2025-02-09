@@ -9,6 +9,6 @@
 
 
 
-⋆⁺｡˚⋆˙‧₊☽ CURRENT TASK ☾₊‧˙⋆˚｡⁺⋆
+⋆⁺｡˚⋆˙‧₊☽ CURRENT TASKS ☾₊‧˙⋆˚｡⁺⋆
 - Janelle: a bit of everything; but will focus on selectComPetDium > viewBattlePets > initial list of BattlePets
 - Nyka: 

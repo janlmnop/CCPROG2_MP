@@ -13,4 +13,14 @@
 
 ⋆⁺｡˚⋆˙‧₊☽ CURRENT TASKS ☾₊‧˙⋆˚｡⁺⋆
 - Janelle: will start work on selectBattle :)
-- Nyka: 
+- Nyka:
+
+
+
+
+⋆⁺｡˚⋆˙‧₊☽ LAST UPDATES ☾₊‧˙⋆˚｡⁺⋆
+- fixed the sentence inputs (feb 21)
+- added BPtotal (feb 22)
+- added editBattlePet (feb 22)
+- added deleteRoster (feb 22)
+- added saveRoster (feb 22)

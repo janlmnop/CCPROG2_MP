@@ -1,38 +1,33 @@
 #include <stdio.h>
 #include <strings.h>
+#include "selectBattle.c"
+#include "selectComPetDium.c"
 
-//DEFINITIIONs (tentative) 
-#define MAX_USERS 50;
-#define MAX_BATTLEPETS 60;
+//DEFINITIIONs
+#define MAX_USERS 50
+#define MAX_BATTLEPETS 60
 
 typedef char String36[37];
 typedef char String30[31];
 typedef char String240[241];
 
 
-//STRUCTURES (tentative)
+//STRUCTURES
 struct Player
 {
-    String36 username; //player username
+    String36 username;  //player username
     String36 roster[9]; //array of arrays
-};
-
-struct BattlePets
-{
-    String30 battlepet; //BattlePet's name
-    int elementalaffinity; //BattlePet's elemental affinity
-    String240 description; //BattlePet short description
 };
 
 
 
 /**
 * Description : Displays the main menu
-* Author/s : Daguiso, Janelle
-*            Mariano, Janyka
+* Author/s : Daguiso, Janelle Ann F.
+*            
 * Section : S27B
-* Last Modified : <date when last revision was made>
-* Acknowledgments : <list of references used in the making of this project>
+* Last Modified : Feb. 7, 2025
+* Acknowledgments : N/A
 */
 void displayMainMenu()
 {
@@ -44,34 +39,11 @@ void displayMainMenu()
 }
 
 
-/**
-* Description : Select Battle!; leads to game proper -> i'm not sure pa if it should return something; we prolly need one of those
-* Author/s : 
-*            
-* Section : S27B
-* Last Modified : <date when last revision was made>
-* Acknowledgments : <list of references used in the making of this project>
-*/
-void selectBattle()
-{
-    printf("\n -- Battle! --\n");
-}
+//selectBattle placeholder
 
+//selectComPetDium placeholder
 
-/**
-* Description : Select ComPetDium; Players can view, add, edit, and delete BattlePets, and save them to their roster
-* Author/s : 
-*            
-* Section : S27B
-* Last Modified : <date when last revision was made>
-* Acknowledgments : <list of references used in the making of this project>
-*/
-void selectComPetDium()
-{
-    printf("\n -- ComPetDium --\n");
-}
-
-/**
+/*
 * Description : Select View Statistics; Players can view the current leaderboard of players and BattlePets
 * Author/s : 
 *            
@@ -86,11 +58,11 @@ void selectViewStatistics()
 
 /**
 * Description : Select Exit; Quit game
-* Author/s : Janelle Ann F. Daguiso
+* Author/s : Daguiso, Janelle Ann F.
 *            
 * Section : S27B
 * Last Modified : Feb. 9, 2025
-* Acknowledgments : <list of references used in the making of this project>
+* Acknowledgments : N/A
 */
 void selectExit(int *quitflag)
 {
@@ -101,52 +73,25 @@ void selectExit(int *quitflag)
 
     if (option == 'Y' || option == 'y')
     {
-        printf("Alright, byeeee");
+        printf("Farewell, player!");
         *quitflag = 1;
     }
     else if (option == 'N' || option == 'n')
     {
-        printf("Yayyyy");
+        printf("Awesome!");
     }
 }
 
 
 
-// FUNCTIONS (tentative)
-// syntax: verb_noun in camel-case
-// notes: 
-//   - functions marked done can still be improved visually, but they should work already
-//   - don't forget to call functions in main
-//   - follow conventions; basically, make it look pretty haha
-
-//displayMainMenu <done>
-    //selectBattle <in progress - Janelle>
-        //selectPlayer <in progres - Janelle>
-        //loadBattlePetRoster
-        //selectBattlePetRoster 
-        //displayBattlePetRoster
-        //compareBattlePets -> this is the BattlePets, fight!
-        //showMatchResults
-        //promptUserPlayAgain
-    //selectComPetDium
-        //viewBattlePets
-        //addBattlePet
-        //editBattlePet
-        //deleteBattlePet
-        //saveRoster
-    //selectViewStatistics
-        //displayTop5Players
-        //displayTop5BattlePets
-        //countPlayerWins -> could just be a pointer that increments
-        //countBattlePetAppearance -> could just be a pointer that increments
-    //selectExit <done>
 
 
 int main () {
     //variable declarations
     int menuinput;
     int quitflag = 0;
-
+    int BPtotal = 16;   /* 16 initially */
+   
 
     //program proper
     do {
@@ -158,7 +103,7 @@ int main () {
         {
             case 1: selectBattle(); break;
 
-            case 2: selectComPetDium(); break;
+            case 2: selectComPetDium(&BPtotal); break;
 
             case 3: selectViewStatistics(); break;
 
@@ -171,3 +116,40 @@ int main () {
 
     return 0;
 }
+
+
+
+
+// notes: 
+//   - functions marked done can still be improved visually, but they should work already
+//   - don't forget to call functions in main
+//   - follow conventions; basically, make it look pretty haha
+//   - there's a lot of functions so the code looks clean
+
+// I - in progress
+// D - done (needs minor improvements)
+// X - done (completely)
+
+/*
+   FUNCTIONS (ideally) 
+    [ ] selectBattle 
+        [I] selectPlayer
+        [ ] loadBattlePetRoster
+        [ ] selectBattlePetRoster
+        [ ] displayBattlePetRoster
+        [ ] compareBattlePets -> this is the BattlePets, fight!
+        [ ] showMatchResults
+        [ ] promptUserPlayAgain
+    [D] selectComPetDium
+        [D] viewBattlePets
+        [D] addBattlePet
+        [D] editBattlePet
+        [D] deleteBattlePet
+        [D] saveRoster
+    [ ] selectViewStatistics
+        [ ]displayTop5Players
+        [ ] displayTop5BattlePets
+        [ ] countPlayerWins -> could just be a pointer that increments
+        [ ] countBattlePetAppearance -> could just be a pointer that increments
+    [X] selectExit
+*/

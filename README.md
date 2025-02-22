@@ -10,5 +10,5 @@
 
 
 ⋆⁺｡˚⋆˙‧₊☽ CURRENT TASKS ☾₊‧˙⋆˚｡⁺⋆
-- Janelle: a bit of everything; am working on saveRoster rn; then, I'll focus on selectBattle :)
+- Janelle: a bit of everything; will start work on selectBattle :)
 - Nyka: 

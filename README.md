@@ -10,5 +10,5 @@
 
 
 ⋆⁺｡˚⋆˙‧₊☽ CURRENT TASKS ☾₊‧˙⋆˚｡⁺⋆
-- Janelle: a bit of everything; am working on editBattlePet; then, maybe I'll focus on selectBattle muna cuz it seems more important for now
+- Janelle: a bit of everything; am working on saveRoster rn; then, I'll focus on selectBattle :)
 - Nyka: 

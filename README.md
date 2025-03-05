@@ -12,7 +12,7 @@
 
 
 ⋆⁺｡˚⋆˙‧₊☽ CURRENT TASKS ☾₊‧˙⋆˚｡⁺⋆
-- Janelle: will start work on selectBattle :)
+- Janelle: selectBattle -> createNewRoster
 - Nyka:
 
 
@@ -24,3 +24,6 @@
 - added editBattlePet (feb 22)
 - added deleteRoster (feb 22)
 - added saveRoster (feb 22)
+- added selectPlayer (mar 5)
+- added loadSavedRoster (mar 5)
+- added displayRoster (mar 5)

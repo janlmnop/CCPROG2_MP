@@ -27,4 +27,6 @@
 - added selectPlayer (mar 5)
 - added loadSavedRoster (mar 5)
 - added displayRoster (mar 5)
+- made definitions.h and transfered all defs and structs there (mar 5)
+- added checkPetAvailability (mar 6)
 - added createNewRoster (mar 6)

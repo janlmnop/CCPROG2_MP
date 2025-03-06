@@ -12,7 +12,7 @@
 
 
 ⋆⁺｡˚⋆˙‧₊☽ CURRENT TASKS ☾₊‧˙⋆˚｡⁺⋆
-- Janelle: selectBattle -> createNewRoster
+- Janelle: selectBattle -> compareBattlePets
 - Nyka:
 
 
@@ -27,3 +27,4 @@
 - added selectPlayer (mar 5)
 - added loadSavedRoster (mar 5)
 - added displayRoster (mar 5)
+- added createNewRoster (mar 6)

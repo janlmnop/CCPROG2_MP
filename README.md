@@ -11,7 +11,7 @@
 
 
 ⋆⁺｡˚⋆˙‧₊☽ CURRENT TASKS ☾₊‧˙⋆˚｡⁺⋆
-- Janelle: selectBattle -> compareBattlePets
+- Janelle: selectBattle -> showMatchResults
 - Nyka:
 
 

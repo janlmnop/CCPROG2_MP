@@ -1,9 +1,8 @@
 ⋆⁺｡˚⋆˙‧₊☽ SOME NOTES ☾₊‧˙⋆˚｡⁺⋆
 - choose any function to work on :p
-- selectBattle > selectPlayer
-  - not sure if we should implement pointers per player, and not sure how to implement that yet if ever (hence, why I might delay it a lil bit hehe)
-  - but, I've already started work on it (will post it once I come up with a solution)
-- MP uses code modularization -> each main function is in a different .c file
+- MP uses code modularization
+  - each main function is in a different .c file, which is included in main.c
+  - all definitions, structures, and function prototypes are also declared in definitions.h
 - while selectComPetDium is mostly done, it needs the following updates:
   - documentation
   - file manipulation

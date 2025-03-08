@@ -157,7 +157,6 @@ void loadSavedRoster (struct BattlePets BP[], struct PlayerTag player[])
     }
 
     saveRosterInfo(BP, player);
-    updateBPmatchcount(BP, player);
 
     printf("\n[Match Roster]\n");
     displayRoster(player);
@@ -260,8 +259,6 @@ void createNewRoster (struct BattlePets BP[], struct PlayerTag currentplayer[], 
             currentplayer[0].roster[x][y] = BP[returnBPIndex(BP, name)];
         }
     }
-
-    // updateBPmatchcount(BP, currentplayer);
 
     // display thisplayer's final roster
     printf("\n[Player's Final Roster]\n");

@@ -1,15 +1,6 @@
 #include <stdio.h>
 #include <strings.h>
 
-#define MAX_BATTLEPETS 60
-
-struct BattlePets
-{
-    String30 battlepet;         //BattlePet's name
-    String30 elementalaffinity; //BattlePet's elemental affinity
-    String240 description;      //BattlePet short description
-    int matchcount;             //number of times the BattlePet has appeared in matches
-};
 
 // selectComPetDium menu options
 void displayComPetDiumOptions ()
@@ -236,6 +227,7 @@ void saveRoster ()
 
     //save to saved_roster/<player_name>.txt
 }
+
 
 /**
 * Description : Select ComPetDium; Players can view, add, edit, and delete BattlePets, and save them to their roster

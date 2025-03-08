@@ -6,12 +6,13 @@
 - while selectComPetDium is mostly done, it needs the following updates:
   - documentation
   - file manipulation
+- also work on selectBattle documentation
 
 
 
 
 ⋆⁺｡˚⋆˙‧₊☽ CURRENT TASKS ☾₊‧˙⋆˚｡⁺⋆
-- Janelle: selectBattle -> showMatchResults
+- Janelle: selectComPetDium -> file manipulation
 - Nyka:
 
 

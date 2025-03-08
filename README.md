@@ -30,3 +30,13 @@
 - made definitions.h and transfered all defs and structs there (mar 5)
 - added checkPetAvailability (mar 6)
 - added createNewRoster (mar 6)
+- added saveRosterInfo (mar 6)
+- added returnBPIndex (mar 6)
+- added returnPlayerIndex (mar 6)
+- added displayChallengers (mar 6)
+- added compareElementalAffinities (mar 6)
+- added countWins (mar 6)
+- added countBattlePets (mar 7)
+- added countPlayers (mar 7)
+- added showMatchResults (mar 8)
+  

@@ -3,22 +3,6 @@
 #include "selectBattle.c"
 #include "selectComPetDium.c"
 
-//DEFINITIIONs
-#define MAX_USERS 50
-#define MAX_BATTLEPETS 60
-
-typedef char String36[37];
-typedef char String30[31];
-typedef char String240[241];
-
-
-//STRUCTURES
-struct Player
-{
-    String36 username;  //player username
-    String36 roster[9]; //array of arrays
-};
-
 
 
 /**
@@ -39,25 +23,18 @@ void displayMainMenu()
 }
 
 
-//selectBattle placeholder
+// selectBattle placeholder
 
-//selectComPetDium placeholder
+// selectComPetDium placeholder
 
-/*
-* Description : Select View Statistics; Players can view the current leaderboard of players and BattlePets
-* Author/s : 
-*            
-* Section : S27B
-* Last Modified : <date when last revision was made>
-* Acknowledgments : <list of references used in the making of this project>
-*/
-void selectViewStatistics()
+// selectViewStatistics placeholder
+void selectViewStatistics ()
 {
-    printf("\n -- View Statistics --\n");
+    printf(" -- View Statistics --\n");
 }
 
 /**
-* Description : Select Exit; Quit game
+* Description : Select Exit; Prompts player to quit the game
 * Author/s : Daguiso, Janelle Ann F.
 *            
 * Section : S27B
@@ -80,6 +57,8 @@ void selectExit(int *quitflag)
     {
         printf("Awesome!");
     }
+    else
+        printf(">:(\n");
 }
 
 
@@ -87,13 +66,13 @@ void selectExit(int *quitflag)
 
 
 int main () {
-    //variable declarations
+    // variable declarations
     int menuinput;
     int quitflag = 0;
-    int BPtotal = 16;   /* 16 initially */
+    int BPtotal = 16;       /* 16 initially; but this'll be gone soon */
    
 
-    //program proper
+    // program proper
     do {
         displayMainMenu();
         printf("\n>> ");
@@ -124,22 +103,20 @@ int main () {
 //   - functions marked done can still be improved visually, but they should work already
 //   - don't forget to call functions in main
 //   - follow conventions; basically, make it look pretty haha
-//   - there's a lot of functions so the code looks clean
 
 // I - in progress
-// D - done (needs minor improvements)
+// D - done (needs minor improvements: files mainly, visual improvements, documentation, etc.)
 // X - done (completely)
 
 /*
    FUNCTIONS (ideally) 
-    [ ] selectBattle 
-        [I] selectPlayer
-        [ ] loadBattlePetRoster
-        [ ] selectBattlePetRoster
-        [ ] displayBattlePetRoster
-        [ ] compareBattlePets -> this is the BattlePets, fight!
-        [ ] showMatchResults
-        [ ] promptUserPlayAgain
+    [D] selectBattle 
+        [D] selectPlayer
+        [D] loadSavedRoster
+        [D] createNewRoster
+        [D] displayRoster
+        [D] compareElementalAffinity -> this is the BattlePets, fight!
+        [D] showMatchResults
     [D] selectComPetDium
         [D] viewBattlePets
         [D] addBattlePet
@@ -147,7 +124,7 @@ int main () {
         [D] deleteBattlePet
         [D] saveRoster
     [ ] selectViewStatistics
-        [ ]displayTop5Players
+        [ ] displayTop5Players
         [ ] displayTop5BattlePets
         [ ] countPlayerWins -> could just be a pointer that increments
         [ ] countBattlePetAppearance -> could just be a pointer that increments

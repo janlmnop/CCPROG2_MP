@@ -6,7 +6,6 @@
 - while selectComPetDium is mostly done, it needs the following updates:
   - documentation
   - file manipulation
-- also work on selectBattle documentation
 
 
 
@@ -19,6 +18,7 @@
 
 
 ⋆⁺｡˚⋆˙‧₊☽ LAST UPDATES ☾₊‧˙⋆˚｡⁺⋆
+*we don't need these pala hehe
 - fixed the sentence inputs (feb 21)
 - added BPtotal (feb 22)
 - added editBattlePet (feb 22)

@@ -11,7 +11,7 @@
 
 
 ⋆⁺｡˚⋆˙‧₊☽ CURRENT TASKS ☾₊‧˙⋆˚｡⁺⋆
-- Janelle: selectComPetDium -> file manipulation
+- Janelle: debugging
 - Nyka: view Statistics
 
 

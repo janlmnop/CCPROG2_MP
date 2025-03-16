@@ -1,3 +1,12 @@
+/**
+* Description : <short description of the project>
+* Author/s : Daguiso, Janelle Ann
+*            Mariano, Janyka Rochelle
+* Section : S27B
+* Last Modified : Mar. 16, 2025
+* Acknowledgments : <list of references used in the making of this project> 
+                    find a reference for this: [^\n]
+*/
 #include <stdio.h>
 #include <strings.h>
 #include "selectBattle.c"
@@ -6,13 +15,8 @@
 
 
 /**
-* Description : Displays the main menu
-* Author/s : Daguiso, Janelle Ann F.
-*            
-* Section : S27B
-* Last Modified : Feb. 7, 2025
-* Acknowledgments : N/A
-*/
+ * Displays the main menu options
+ */
 void displayMainMenu()
 {
     printf("\nMain Menu\n");
@@ -21,7 +25,6 @@ void displayMainMenu()
     printf("[3] View Statistics\n");
     printf("[0] Exit\n");
 }
-
 
 // selectBattle placeholder
 
@@ -34,13 +37,9 @@ void selectViewStatistics ()
 }
 
 /**
-* Description : Select Exit; Prompts player to quit the game
-* Author/s : Daguiso, Janelle Ann F.
-*            
-* Section : S27B
-* Last Modified : Feb. 9, 2025
-* Acknowledgments : N/A
-*/
+ * Prompts the user to exit the program
+ * @param quitflag Indicates whether the program should terminate: 0 to continue, 1 to exit
+ */
 void selectExit(int *quitflag)
 {
     char option;
@@ -54,25 +53,17 @@ void selectExit(int *quitflag)
         *quitflag = 1;
     }
     else if (option == 'N' || option == 'n')
-    {
         printf("Awesome!");
-    }
     else
         printf(">:(\n");
 }
 
 
-
-
-
 int main () {
-    // variable declarations
     int menuinput;
     int quitflag = 0;
-    int BPtotal = 16;       /* 16 initially; but this'll be gone soon */
    
 
-    // program proper
     do {
         displayMainMenu();
         printf("\n>> ");
@@ -82,7 +73,7 @@ int main () {
         {
             case 1: selectBattle(); break;
 
-            case 2: selectComPetDium(&BPtotal); break;
+            case 2: selectComPetDium(); break;
 
             case 3: selectViewStatistics(); break;
 
@@ -96,7 +87,17 @@ int main () {
     return 0;
 }
 
-
+/** 
+ * This is to certify that this project is my/our own work, based on my/our personal
+ * efforts in studying and applying the concepts learned. I/We have constructed the
+ * functions and their respective algorithms and corresponding code by myself/ourselves.
+ * The program was run, tested, and debugged by my/our own efforts. I/We further certify
+ * that I/We have not copied in part or whole or otherwise plagiarized the work of
+ * other students and/or persons.asm
+ * 
+ * Daguiso, Janelle Ann 12305782
+ * Mariano, Janyka Rochelle <id num>
+*/
 
 
 // notes: 
@@ -106,23 +107,23 @@ int main () {
 
 // I - in progress
 // D - done (needs minor improvements: files mainly, visual improvements, documentation, etc.)
-// X - done (completely)
+// X - done (completely; well, depends if you want to improve it visually)
 
 /*
    FUNCTIONS (ideally) 
-    [D] selectBattle 
-        [D] selectPlayer
-        [D] loadSavedRoster
-        [D] createNewRoster
-        [D] displayRoster
-        [D] compareElementalAffinity -> this is the BattlePets, fight!
-        [D] showMatchResults
-    [D] selectComPetDium
-        [D] viewBattlePets
-        [D] addBattlePet
-        [D] editBattlePet
-        [D] deleteBattlePet
-        [D] saveRoster
+    [X] selectBattle 
+        [X] selectPlayer
+        [X] loadSavedRoster
+        [X] createNewRoster
+        [X] displayRoster
+        [X] compareElementalAffinity -> this is the BattlePets, fight!
+        [X] showMatchResults
+    [X] selectComPetDium
+        [X] viewBattlePets
+        [X] addBattlePet
+        [X] editBattlePet
+        [X] deleteBattlePet
+        [X] saveRoster
     [ ] selectViewStatistics
         [ ] displayTop5Players
         [ ] displayTop5BattlePets

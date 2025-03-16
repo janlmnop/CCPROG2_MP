@@ -2,8 +2,11 @@
 #include <strings.h>
 #include "definitions.h"
 
-
-// countBattlePets | reference: [^\n]
+/**
+ * Counts the number of BattlePets in competdium.txt
+ * @param BP Array of BattlePet structures
+ * @return The number of BattlePets in competdium.txt
+ */
 int countBattlePets (struct BattlePets BP[])
 {
     FILE *fp; 
@@ -12,17 +15,21 @@ int countBattlePets (struct BattlePets BP[])
     fp = fopen("competdium.txt", "r");
 
     if ((fp = fopen("competdium.txt", "r")) == NULL)
-		fprintf(stderr, "ERROR: %s does not exist.\n", "competdium.txt");
+		printf("ERROR: %s does not exist.\n", "competdium.txt");
 
     while ((fscanf(fp, "%[^\n]\n%[^\n]\n%[^\n]\n%d\n\n", BP[i].battlepet, BP[i].elementalaffinity, BP[i].description, &BP[i].matchcount)) == 4)
         i++;
 
-    return i;
-
     fclose(fp);
+
+    return i;
 }
 
-// countPlayers
+/**
+ * Counts the number of players in players.txt
+ * @param playerlist Array of PlayerTag structures
+ * @return The number of players in players.txt
+ */
 int countPlayers (struct PlayerTag playerlist[])
 {
     FILE *fp; 
@@ -31,17 +38,22 @@ int countPlayers (struct PlayerTag playerlist[])
     fp = fopen("players.txt", "r");
 
     if ((fp = fopen("players.txt", "r")) == NULL)
-		fprintf(stderr, "ERROR: %s does not exist.\n", "players.txt");
+		printf("ERROR: %s does not exist.\n", "players.txt");
 
     while ((fscanf(fp, "%[^\n]\n%d\n%d\n%d\n\n", playerlist[i].playername, &playerlist[i].wincount, &playerlist[i].losscount, &playerlist[i].drawcount)) == 4)
         i++;
 
-    return i;
-
     fclose(fp);
+     
+    return i;
 }
 
-// selectPlayer | reference: [^\n]
+/**
+ * Option for the user to select from a list of existing players or to make a new one
+ * @param playerlist Array of PlayerTag structures to display the existing players
+ * @param player The current player
+ * @pre playerlist contains existing players from prevous games
+ */
 void selectPlayer (struct PlayerTag playerlist[], struct PlayerTag player[])
 {
     FILE *fp; 
@@ -49,11 +61,7 @@ void selectPlayer (struct PlayerTag playerlist[], struct PlayerTag player[])
     int option;
     int i=0;
 
-    // displays current list of players from players.txt
     fp = fopen("players.txt", "r");
-    if ((fp = fopen("players.txt", "r")) == NULL)
-		fprintf(stderr, "ERROR: %s does not exist.\n", "players.txt");
-
     while ((fscanf(fp, "%[^\n]\n%d\n%d\n%d\n\n", playerlist[i].playername, &playerlist[i].wincount, &playerlist[i].losscount, &playerlist[i].drawcount)) == 4)
     {
         fprintf(stdout, "[%d] %s\n", i+1, playerlist[i].playername);
@@ -67,27 +75,31 @@ void selectPlayer (struct PlayerTag playerlist[], struct PlayerTag player[])
     if (option == i+1)
     {
         fp = fopen("players.txt", "a");
-        fprintf(stdout, "\nNew player username: ");
-        fscanf(fp, "%s", playerlist[option-1].playername);
-        playerlist[option-1].wincount = 0;
-        playerlist[option-1].losscount = 0;
-        playerlist[option-1].drawcount = 0;
+        printf("\nNew player username: ");
+        scanf("%s", playerlist[option-1].playername);
+        strcpy(player[0].playername, playerlist[option-1].playername);
+        player[0].wincount = 0;
+        player[0].losscount = 0;
+        player[0].drawcount = 0;
         fprintf(fp, "%s\n%d\n%d\n%d\n\n", playerlist[option-1].playername, playerlist[option-1].wincount, playerlist[option-1].losscount, playerlist[option-1].drawcount);
-        printf("\nGreetings, %s!\n", playerlist[option-1].playername);
+        printf("\nGreetings, %s!\n", player[0].playername);
         fclose(fp);
     }
-    else if (option < i+1) /* past players option */
+    else if (option < i+1 && option > 0) /* past players option */
     {
         printf("\nWelcome back, %s!\n", playerlist[option-1].playername);
         player[0] = playerlist[option-1];
     }
     else
         printf("Incorrect input. Try again.\n");
-   
+    
     fclose(fp);
 }
 
-// displayRoster
+/**
+ * Displays a player's BattlePet roster
+ * @param player The current player
+ */
 void displayRoster (struct PlayerTag player[])
 {
     printf("\tC#0\t\tC#1\t\tC#2\n");
@@ -105,7 +117,12 @@ void displayRoster (struct PlayerTag player[])
     }
 }
 
-// saveRosterInfo | structure to structure assignment (i.e. player's roster <- BP info)
+/**
+ * Assigns BattlePet information (name, elemental affinity, description, & match count) to the players' roster
+ * @param BP Array of BattlePet structures
+ * @param player The current player
+ * @pre player[0].roster.battlepet should exist in competdium.txt (list of BattlePets)
+ */
 void saveRosterInfo (struct BattlePets BP[], struct PlayerTag player[])
 {
     int i=0, j, x, y;
@@ -130,66 +147,95 @@ void saveRosterInfo (struct BattlePets BP[], struct PlayerTag player[])
     fclose(fp);
 }
 
-// loadSavedRoster
-void loadSavedRoster (struct BattlePets BP[], struct PlayerTag player[])
+/**
+ * Loads a player's roster from a file
+ * @param BP Array of BattlePet structures
+ * @param currentplayer The current player
+ * @param otherplayer The opposing player
+ */
+void loadSavedRoster (struct BattlePets BP[], struct PlayerTag currentplayer[], struct PlayerTag otherplayer[])
 {
     String36 filename;
     FILE *fp;
 
     // look for the player's file
     strcpy(filename, "saved_roster/"); 
-    strcat(filename, player[0].playername);
+    strcat(filename, currentplayer[0].playername);
     strcat(filename, ".txt");
 
     fp = fopen(filename, "r");
 
-    if ((fp = fopen(filename, "r")) == NULL) {
-		fprintf(stderr, "ERROR: %s does not exist.\n", filename);
-	}
-
-    // scan player's file and get their BPs
-    for (int i=0; i<3; i++)
+    if ((fp = fopen(filename, "r")) == NULL)
     {
-        for (int j=0; j<3; j++)
+		printf("ERROR: %s does not exist.\n", filename);
+
+        printf("\nCreating New Roster\n");
+        createNewRoster(BP, currentplayer, otherplayer);
+	}
+    else
+    {
+        // scan player's file and get their BPs
+        for (int i=0; i<3; i++)
         {
-            fscanf(fp, "%s", player[0].roster[i][j].battlepet);
+            for (int j=0; j<3; j++)
+            {
+                fscanf(fp, "%s", currentplayer[0].roster[i][j].battlepet);
+            }
         }
-    }
 
-    saveRosterInfo(BP, player);
+        saveRosterInfo(BP, currentplayer);
 
-    printf("\n[Match Roster]\n");
-    displayRoster(player);
+        printf("\n[Match Roster]\n");
+        displayRoster(currentplayer);
 
-    fclose(fp);
+        fclose(fp);
+    } 
 }
 
-// checkPetAvailability
-int checkPetAvailability (String36 BattlePet, struct PlayerTag player[])
+/**
+ * Checks whether a BattlePet has already been selected by the other player
+ * @param selectedBP The index of the BattlePet the user wants to store in their roster
+ * @param player The current player
+ * @param BP Array of BattlePet structures
+ * @pre BattlePet should be an existing BattlePet in competdium.txt
+ */
+int checkPetAvailability (int selectedBP, struct PlayerTag player[], struct BattlePets BP[])
 {
+
     for (int i = 0; i <3; i++)
     {
         for (int j=0; j<3; j++)
         {
-            if (strcmp(BattlePet, player[0].roster[i][j].battlepet) == 0)
+            if (strcmp(player[0].roster[i][j].battlepet, BP[selectedBP].battlepet) == 0)
                 return 1;   /* returns 1 if the BP is already selected by the other player */
         }
     }
     return 0;   /* returns 0 if the BP is still available */
 }
 
-// returnBPIndex
-int returnBPIndex (struct BattlePets BP[], String36 name)
+/**
+ * Returns the index of the selected BattlePet
+ * @param BP Array of BattlePet structures
+ * @param selectedBP The index of the BattlePet the user wants to store in their roster
+ * @return The index of the selected BattlePet based on competdium.txt
+ */
+int returnBPIndex (struct BattlePets BP[], int selectedBP)
 {
     for (int i=0; i<countBattlePets(BP); i++)
     {
-        if (strcmp(BP[i].battlepet, name) == 0)
+        if (strcmp(BP[i].battlepet, BP[selectedBP].battlepet) == 0)
             return i;
     }
     return -1;
 }
 
-// returnPlayerIndex
+/**
+ * Returns the index of the player
+ * @param playerlist Array of PlayerTag structures
+ * @param name The name of the player
+ * @return The index of the player
+ * @pre name exists in players.txt
+ */
 int returnPlayerIndex (struct PlayerTag playerlist[], String36 name)
 {
     for (int i=0; i<countPlayers(playerlist); i++)
@@ -200,12 +246,17 @@ int returnPlayerIndex (struct PlayerTag playerlist[], String36 name)
     return -1;
 }
 
-// createNewRoster | reference [^\n]
+/**
+ * Option to create a new BattlePet roster for the current game
+ * @param BP Array of BattlePet structures
+ * @param currentplayer The current player
+ * @param otherplayer The opposing player (used to compare if the currentplayer's chosen BattlePet has already been selected)
+ */
 void createNewRoster (struct BattlePets BP[], struct PlayerTag currentplayer[], struct PlayerTag otherplayer[])
 {
     int i=0, j, x, y;
     int flag[16] = {0}; /* initializes array elements to 0 */
-    String36 name;
+    int selectedBP;
     FILE *fp;
 
     // show grid where BattlePets will go
@@ -218,7 +269,7 @@ void createNewRoster (struct BattlePets BP[], struct PlayerTag currentplayer[], 
         i++;
 
     // check whether the BattlePet has been selected by otherplayer
-    for (j = 0; j<i; j++)
+    for (j=0; j<i; j++)
     {
         for (x=0; x<3; x++)
         {
@@ -237,7 +288,7 @@ void createNewRoster (struct BattlePets BP[], struct PlayerTag currentplayer[], 
         if (flag[j] == 1) 
             printf("[x] %s\n", BP[j].battlepet);
         else
-            printf("[%d] %s\n", j + 1, BP[j].battlepet);
+            printf("[%d] %s\n", j+1, BP[j].battlepet);
     }
 
     // let user make a roster
@@ -248,15 +299,18 @@ void createNewRoster (struct BattlePets BP[], struct PlayerTag currentplayer[], 
         {
             do {
                 printf("[%d][%d]: ", x, y);
-                scanf("%s", name);
+                scanf("%d", &selectedBP);
     
-                if (checkPetAvailability(name, otherplayer))
+                selectedBP -= 1;
+                if (checkPetAvailability(selectedBP, otherplayer, BP))
                     printf("This BattlePet has already been selected!\n");
+                else if (selectedBP <= 0 || selectedBP >= i)
+                    printf("Incorrect input. Try again.\n");
     
-            } while (checkPetAvailability(name, otherplayer));
+            } while (checkPetAvailability(selectedBP, otherplayer, BP));
 
-            strcpy(currentplayer[0].roster[x][y].battlepet, name);
-            currentplayer[0].roster[x][y] = BP[returnBPIndex(BP, name)];
+            strcpy(currentplayer[0].roster[x][y].battlepet, BP[selectedBP].battlepet);
+            currentplayer[0].roster[x][y] = BP[selectedBP];
         }
     }
 
@@ -267,7 +321,11 @@ void createNewRoster (struct BattlePets BP[], struct PlayerTag currentplayer[], 
     fclose(fp);
 }
 
-// displayChallengers
+/**
+ * Displays which BattlePet goes against each other in each player's roster
+ * @param player1 Player 1
+ * @param player2 Player 2
+ */
 void displayChallengers (struct PlayerTag player1[], struct PlayerTag player2[])
 {
     printf("\n[Challengers]\n");
@@ -280,7 +338,13 @@ void displayChallengers (struct PlayerTag player1[], struct PlayerTag player2[])
     }
 }
 
-// compareElementalAffinities: tests wins and loss cases
+/**
+ * Compares the elemental affinities of the BattlePets in each player's roster and stores the results in a 1D array
+ * @param BP Array of BattlePet structures
+ * @param results 2D array of characters to store match results
+ * @param player1 Player 1
+ * @param player2 Player 2 
+ */
 void compareElementalAffinities (struct BattlePets BP[], char results[3][3], struct PlayerTag player1[], struct PlayerTag player2[])
 {
     FILE *fp;
@@ -387,7 +451,12 @@ void compareElementalAffinities (struct BattlePets BP[], char results[3][3], str
     fclose(fp);
 }
 
-// countWins 
+/**
+ * Counts the occurence of 1s and 2s in results to determine a winner
+ * @param results 2D array of characters to store match results
+ * @param ones Adress that stores the occurence of 1s in results
+ * @param twos Adress that stores the occurence of 2s in results
+ */
 void countWins (char results[3][3], int *ones, int *twos)
 {
     for (int i=0; i<3; i++)
@@ -402,8 +471,14 @@ void countWins (char results[3][3], int *ones, int *twos)
     }
 }
 
-// checkTicTacToeWin
-int checkTicTacToeWin (char results[3][3], struct PlayerTag player[]) 
+/**
+ * Checks whether a lucky win can be declared based on results
+ * @param results 2D array of characters to store match results
+ * @return 1 if player1 wins based on Tic-Tac-Toe rules
+ * @return 2 if player2 wins based on Tic-Tac-Toe rules
+ * @return 0 if there is no Tic-Tac-Toe pattern detected
+ */
+int checkTicTacToeWin (char results[3][3]) 
 {
     // check rows and columns
     for (int i = 0; i < 3; i++)
@@ -427,12 +502,18 @@ int checkTicTacToeWin (char results[3][3], struct PlayerTag player[])
 
     if ((results[0][0] == '2' && results[1][1] == '2' && results[2][2] == '2') ||
         (results[0][2] == '2' && results[1][1] == '2' && results[2][0] == '2'))
-        return 1;
+        return 2;
 
     return 0;
 }
 
-// showMatchResults: shows match results and saves them to a file
+/**
+ * Shows the match results and saves them to a file
+ * @param playerlist Array of PlayerTag structures
+ * @param BP Array of BattlePet structures
+ * @param player1 Player 1
+ * @param player2 Player 2
+ */
 void showMatchResults (struct PlayerTag playerlist[], struct BattlePets BP[], struct PlayerTag player1[], struct PlayerTag player2[])
 {
     int i, j;
@@ -441,11 +522,11 @@ void showMatchResults (struct PlayerTag playerlist[], struct BattlePets BP[], st
     int p1index = returnPlayerIndex(playerlist, player1[0].playername); /* player1's index simplified */
     int p2index = returnPlayerIndex(playerlist, player2[0].playername); /* player2's index simplified */
     char results[3][3]= {0}; /* char array that stores match results */
-    int matchnum;       /* number of matches -> for incrementing */
-    char matchcount;    /* number of matches -> to rename files */
-    String36 winner;    /* stores winning player's name */
-    String36 typeofwin; /* stores the type of win */
-    String36 filename;  /* filename where match results are stored */
+    int matchnum;          /* number of matches -> for incrementing */
+    char matchcount[3];    /* number of matches -> for renaming files */
+    String36 winner;       /* stores winning player's name */
+    String36 typeofwin;    /* stores the type of win */
+    String36 filename;     /* filename where match results are stored */
     FILE *fp; 
 
     compareElementalAffinities(BP, results, player1, player2);
@@ -463,8 +544,8 @@ void showMatchResults (struct PlayerTag playerlist[], struct BattlePets BP[], st
     // count 1s and 2s
     countWins(results, &ones, &twos);
 
-    // determine lucky win
-    luckywinflag = checkTicTacToeWin(results, player1);
+    // determine lucky win if any
+    luckywinflag = checkTicTacToeWin(results);
 
     //determine a winner
     if (luckywinflag == 1)
@@ -510,11 +591,11 @@ void showMatchResults (struct PlayerTag playerlist[], struct BattlePets BP[], st
     printf("\n");
 
     // update the contents of players.txt based on results
-    fp = fopen("players.txt", "wb");
+    fp = fopen("players.txt", "w");
     while ((fscanf(fp, "%[^\n]\n%d\n%d\n%d\n\n", playerlist[i].playername, &playerlist[i].wincount, &playerlist[i].losscount, &playerlist[i].drawcount)) == 4)
         i++;
 
-    for (int m = 0; m < i; m++)
+    for (int m=0; m<i+1; m++)
     {
         fprintf(fp, "%s\n%d\n%d\n%d\n\n", playerlist[m].playername, playerlist[m].wincount, playerlist[m].losscount, playerlist[m].drawcount);
     } 
@@ -522,9 +603,9 @@ void showMatchResults (struct PlayerTag playerlist[], struct BattlePets BP[], st
 
     // determine the name of the results file
     fp = fopen("results/match_count.txt", "r");
-    fscanf(fp, " %c", &matchcount);
+    fscanf(fp, "%s", matchcount);
     strcpy(filename, "results/match_"); 
-    strcat(filename, &matchcount);
+    strcat(filename, matchcount);
     strcat(filename, ".txt");
     fclose(fp);
 
@@ -567,13 +648,8 @@ void showMatchResults (struct PlayerTag playerlist[], struct BattlePets BP[], st
 
 
 /**
-* Description : Select Battle!; Leads to game proper
-* Author/s : Daguiso, Janelle Ann F.
-*            
-* Section : S27B
-* Last Modified : Mar. 8, 2025
-* Acknowledgments : N/A
-*/
+ * Main function executed when the player selects 'Battle!'; leads to the game proper.
+ */
 void selectBattle()
 {
     struct BattlePets BP[MAX_BATTLEPETS];
@@ -595,7 +671,7 @@ void selectBattle()
     scanf("%d", &option);
     switch (option)
     {
-        case 1: loadSavedRoster(BP, player1); break;
+        case 1: loadSavedRoster(BP, player1, player2); break;
         case 2: createNewRoster(BP, player1, player2); break;
         default: printf("Incorrect input. Try again.\n");
     }    
@@ -613,7 +689,7 @@ void selectBattle()
     scanf("%d", &option);
     switch (option)
     {
-        case 1: loadSavedRoster(BP, player2); break;
+        case 1: loadSavedRoster(BP, player2, player1); break;
         case 2: createNewRoster(BP, player2, player1); break;
         default: printf("Incorrect input. Try again.\n");
     }  

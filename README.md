@@ -3,15 +3,12 @@
 - MP uses code modularization
   - each main function is in a different .c file, which is included in main.c
   - all definitions, structures, and function prototypes are also declared in definitions.h
-- while selectComPetDium is mostly done, it needs the following updates:
-  - documentation
-  - file manipulation
 
 
 
 
 ⋆⁺｡˚⋆˙‧₊☽ CURRENT TASKS ☾₊‧˙⋆˚｡⁺⋆
-- Janelle: debugging
+- Janelle: finding a reference for [^\n]
 - Nyka: view Statistics
 
 

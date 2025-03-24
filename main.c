@@ -4,8 +4,7 @@
 *            Mariano, Janyka Rochelle
 * Section : S27B
 * Last Modified : Mar. 16, 2025
-* Acknowledgments : <list of references used in the making of this project> 
-                    find a reference for this: [^\n]
+* Acknowledgments : https://cplusplus.com/reference/cstdio/scanf/
 */
 #include <stdio.h>
 #include <strings.h>

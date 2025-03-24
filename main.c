@@ -3,14 +3,15 @@
 * Author/s : Daguiso, Janelle Ann
 *            Mariano, Janyka Rochelle
 * Section : S27B
-* Last Modified : Mar. 16, 2025
+* Last Modified : Mar. 24, 2025
 * Acknowledgments : https://cplusplus.com/reference/cstdio/scanf/
 */
+
 #include <stdio.h>
 #include <strings.h>
+#include "definitions.h"
 #include "selectBattle.c"
 #include "selectComPetDium.c"
-
 
 
 /**
@@ -70,9 +71,9 @@ int main () {
 
         switch(menuinput)
         {
-            case 1: selectBattle(); break;
+            case 1: Battle(); break;
 
-            case 2: selectComPetDium(); break;
+            case 2: ComPetDium(); break;
 
             case 3: selectViewStatistics(); break;
 
@@ -96,37 +97,4 @@ int main () {
  * 
  * Daguiso, Janelle Ann 12305782
  * Mariano, Janyka Rochelle <id num>
-*/
-
-
-// notes: 
-//   - functions marked done can still be improved visually, but they should work already
-//   - don't forget to call functions in main
-//   - follow conventions; basically, make it look pretty haha
-
-// I - in progress
-// D - done (needs minor improvements: files mainly, visual improvements, documentation, etc.)
-// X - done (completely; well, depends if you want to improve it visually)
-
-/*
-   FUNCTIONS (ideally) 
-    [X] selectBattle 
-        [X] selectPlayer
-        [X] loadSavedRoster
-        [X] createNewRoster
-        [X] displayRoster
-        [X] compareElementalAffinity -> this is the BattlePets, fight!
-        [X] showMatchResults
-    [X] selectComPetDium
-        [X] viewBattlePets
-        [X] addBattlePet
-        [X] editBattlePet
-        [X] deleteBattlePet
-        [X] saveRoster
-    [ ] selectViewStatistics
-        [ ] displayTop5Players
-        [ ] displayTop5BattlePets
-        [ ] countPlayerWins -> could just be a pointer that increments
-        [ ] countBattlePetAppearance -> could just be a pointer that increments
-    [X] selectExit
 */

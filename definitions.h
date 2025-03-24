@@ -1,6 +1,16 @@
+/************************************************************************************************************************
+ * Description   : This file is for declaring definitions, structures, and function prototypes used in the program.
+ * Authors/s     : Daguiso, Janelle Ann F.
+ * 
+ * Section       : S27B
+ * Last Modified : Mar. 24, 2025
+*************************************************************************************************************************/
+
 #include <stdio.h>
 #include <strings.h>
 
+#ifndef definitions
+#define definitions
 
 #define MAX_USERS 50            // Maximum number of Users / Players
 #define MAX_BATTLEPETS 60       // Maximum number of BattlePets
@@ -52,9 +62,12 @@ void countWins (char results[3][3], int *ones, int *twos);
 void showMatchResults (struct PlayerTag playerlist[], struct BattlePets BP[], struct PlayerTag player1[], struct PlayerTag player2[]);
 
 /* selectComPetDium.c */
-// void populateBattlePetList (struct BattlePets BP[], int *BPtotal);
-// void viewBattlePets (struct BattlePets BP[], int *BPtotal);
-// void addBattlePet (struct BattlePets BP[], int *BPtotal);
-// void editBattlePet (struct BattlePets BP[]);
-// void deleteBattlePet (struct BattlePets BP[], int *BPtotal);
-// void displayBoard (String36 Board[][3]);
+void viewBattlePets (struct BattlePets BP[]);
+void addBattlePet (struct BattlePets BP[]);
+void editBattlePet (struct BattlePets BP[]);
+void deleteBattlePet (struct BattlePets BP[]);
+void displayBoard (String36 Board[][3]);
+void saveRoster (struct BattlePets BP[]);
+
+
+#endif // definitions

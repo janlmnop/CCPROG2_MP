@@ -1,24 +1,17 @@
+/**********************************************************************************************************************
+ * Description   : This file includes the ComPetDum portion of the program, which enables users to view, add, edit,
+ *                 delete BattlePets, and save them to a roster.
+ * Author/s      : Daguiso, Janelle Ann F.
+ * 
+ * Section       : S27B
+ * Last Modified : Mar. 16, 2025
+***********************************************************************************************************************/
+
+#ifndef selectComPetDium
+#define selectComPetDium
+
 #include <stdio.h>
 #include <strings.h>
-
-
-#define MAX_USERS 50            // Maximum number of Users / Players
-#define MAX_BATTLEPETS 60       // Maximum number of BattlePets
-
-typedef char String36[37];      // Player's username
-typedef char String30[31];      // BattlePet name and elemental affinity
-typedef char String240[241];    // BattlePet description
-
-/**
- * Represents a BattlePet 
- */
-struct BattlePet
-{
-    String30 battlepet;         // BattlePet's name
-    String30 elementalaffinity; // BattlePet's elemental affinity
-    String240 description;      // BattlePet's short description
-    int matchcount;             // Number of times the BattlePet has appeared in matches
-};
 
 
 /**
@@ -38,7 +31,7 @@ void displayComPetDiumOptions ()
  * Option to display the list of BattlePets in competdium.txt
  * @param BP Array of BattlePet structures
  */
-void viewBattlePets (struct BattlePet BP[])
+void viewBattlePets (struct BattlePets BP[])
 {
   FILE *fp;
 
@@ -70,7 +63,7 @@ void viewBattlePets (struct BattlePet BP[])
  * Option to add a BattlePet to the list of BattlePets in competdium.txt
  * @param BP Array of BattlePet structures
  */
-void addBattlePet (struct BattlePet BP[])
+void addBattlePet (struct BattlePets BP[])
 {
     int i=0;
     int len;
@@ -136,7 +129,7 @@ void addBattlePet (struct BattlePet BP[])
  * Option to edit an existing BattlePet in the list of BattlePets in competdium.txt
  * @param BP Array of BattlePet structures
  */
-void editBattlePet (struct BattlePet BP[])
+void editBattlePet (struct BattlePets BP[])
 {
     int i = 0, j;
     int option;
@@ -211,7 +204,7 @@ void editBattlePet (struct BattlePet BP[])
  * Option ot delete a BattlePet from the list of BattlePets in competdium.txt
  * @param BP Array of BattlePet structures
  */
-void deleteBattlePet (struct BattlePet BP[])
+void deleteBattlePet (struct BattlePets BP[])
 {
     int j=0, i=0, deletedBP;
     char option;
@@ -290,7 +283,7 @@ void displayBoard (String36 Board[][3])
  * Option for a user to create and save a 3x3 roster
  * @param BP Array of BattlePet structures
  */
-void saveRoster (struct BattlePet BP[])
+void saveRoster (struct BattlePets BP[])
 {
     int i, j, x=0, y;
     int okflag=0;
@@ -382,15 +375,14 @@ void saveRoster (struct BattlePet BP[])
 /**
  * Main function executed when the player selects 'ComPetDium'
  */
-void selectComPetDium()
+void ComPetDium()
 {
-    struct BattlePet BP[MAX_BATTLEPETS];
+    struct BattlePets BP[MAX_BATTLEPETS];
     int competdiuminput;
 
     printf("\n -- ComPetDium --\n");
 
     displayComPetDiumOptions();
-    // populateBattlePetList(Initial); //this should come from a file initially
     printf("\n>> ");
     scanf("%d", &competdiuminput);
 
@@ -409,5 +401,6 @@ void selectComPetDium()
         default: printf("Incorrect input. Try again.\n");
     }
     printf("\n");
-
 }
+
+#endif // selectComPetDium

@@ -1,5 +1,5 @@
 /**
-* Description : <short description of the project>
+* Description : BattlePets! is a game where two players' rosters compete against each other based on their elemental affinities.
 * Author/s : Daguiso, Janelle Ann
 *            Mariano, Janyka Rochelle
 * Section : S27B

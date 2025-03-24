@@ -1,6 +1,17 @@
+/**********************************************************************************************************************
+ * Description   : This file includes the Battle! portion of the game proper.
+ * Author/s      : Daguiso, Janelle Ann F.
+ * 
+ * Section       : S27B
+ * Last Modified : Mar. 16, 2025
+***********************************************************************************************************************/
+
+#ifndef selectBattle
+#define selectBattle
+
 #include <stdio.h>
 #include <strings.h>
-#include "definitions.h"
+
 
 /**
  * Counts the number of BattlePets in competdium.txt
@@ -650,7 +661,7 @@ void showMatchResults (struct PlayerTag playerlist[], struct BattlePets BP[], st
 /**
  * Main function executed when the player selects 'Battle!'; leads to the game proper.
  */
-void selectBattle()
+void Battle ()
 {
     struct BattlePets BP[MAX_BATTLEPETS];
     struct PlayerTag playerlist[MAX_USERS];
@@ -702,3 +713,5 @@ void selectBattle()
     // Show Match Results
     showMatchResults(playerlist, BP, player1, player2);
 }
+
+#endif // selectBattle.c

@@ -12,6 +12,7 @@
 #include "definitions.h"
 #include "selectBattle.c"
 #include "selectComPetDium.c"
+#include "ViewStatistics.c"
 
 
 /**

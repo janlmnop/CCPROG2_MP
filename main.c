@@ -96,5 +96,5 @@ int main () {
  * other students and/or persons.asm
  * 
  * Daguiso, Janelle Ann 12305782
- * Mariano, Janyka Rochelle <id num>
+ * Mariano, Janyka Rochelle 12307653
 */

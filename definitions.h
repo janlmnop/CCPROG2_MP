@@ -3,7 +3,7 @@
  * Authors/s     : Daguiso, Janelle Ann F.
  * 
  * Section       : S27B
- * Last Modified : Mar. 24, 2025
+ * Last Modified : Mar. 30, 2025
 *************************************************************************************************************************/
 
 #include <stdio.h>
@@ -69,5 +69,9 @@ void deleteBattlePet (struct BattlePets BP[]);
 void displayBoard (String36 Board[][3]);
 void saveRoster (struct BattlePets BP[]);
 
+/* ViewStatistics.c */
+void DisplayTopPlayers (struct PlayerTag playerlist[]);
+void DisplayTopBattlePets (struct BattlePets BP[]);
 
-#endif // definitions 
+
+#endif // definitions

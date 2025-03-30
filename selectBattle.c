@@ -3,7 +3,7 @@
  * Author/s      : Daguiso, Janelle Ann F.
  * 
  * Section       : S27B
- * Last Modified : Mar. 16, 2025
+ * Last Modified : Mar. 30, 2025
 ***********************************************************************************************************************/
 
 #ifndef selectBattle
@@ -151,10 +151,26 @@ void saveRosterInfo (struct BattlePets BP[], struct PlayerTag player[])
             for (y=0; y<3; y++)
             {
                 if (strcmp(BP[j].battlepet, player[0].roster[x][y].battlepet) == 0)
+                {
                     player[0].roster[x][y] = BP[j];
+                    BP[j].matchcount +=1;
+                }
             }
         }
+        
     }
+
+    // update matchcount in competdium.txt
+    fp = fopen("competdium.txt", "w");
+    while ((fscanf(fp, "%[^\n]\n%[^\n]\n%[^\n]\n%d\n\n", BP[i].battlepet, BP[i].elementalaffinity, BP[i].description, &BP[i].matchcount)) == 4)
+        i++;
+
+    for (int m=0; m<i+1; m++)
+    {
+        fprintf(fp, "%s\n%s\n%s\n%d\n\n", BP[m].battlepet, BP[m].elementalaffinity, BP[m].description, BP[m].matchcount);
+    } 
+    fclose(fp);
+
     fclose(fp);
 }
 
@@ -302,6 +318,7 @@ void createNewRoster (struct BattlePets BP[], struct PlayerTag currentplayer[], 
             printf("[%d] %s\n", j+1, BP[j].battlepet);
     }
 
+    
     // let user make a roster
     printf("\n[Create Roster]\n");
     for (x=0; x<3; x++)
@@ -317,6 +334,8 @@ void createNewRoster (struct BattlePets BP[], struct PlayerTag currentplayer[], 
                     printf("This BattlePet has already been selected!\n");
                 else if (selectedBP <= 0 || selectedBP >= i)
                     printf("Incorrect input. Try again.\n");
+                else
+                   BP[selectedBP].matchcount +=1;
     
             } while (checkPetAvailability(selectedBP, otherplayer, BP));
 
@@ -328,6 +347,17 @@ void createNewRoster (struct BattlePets BP[], struct PlayerTag currentplayer[], 
     // display thisplayer's final roster
     printf("\n[Player's Final Roster]\n");
     displayRoster(currentplayer);
+
+    // update matchcount in competdium.txt
+    fp = fopen("competdium.txt", "w");
+    while ((fscanf(fp, "%[^\n]\n%[^\n]\n%[^\n]\n%d\n\n", BP[i].battlepet, BP[i].elementalaffinity, BP[i].description, &BP[i].matchcount)) == 4)
+        i++;
+
+    for (int m=0; m<i+1; m++)
+    {
+        fprintf(fp, "%s\n%s\n%s\n%d\n\n", BP[m].battlepet, BP[m].elementalaffinity, BP[m].description, BP[m].matchcount);
+    } 
+    fclose(fp);
 
     fclose(fp);
 }

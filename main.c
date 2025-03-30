@@ -3,7 +3,7 @@
 * Author/s : Daguiso, Janelle Ann
 *            Mariano, Janyka Rochelle
 * Section : S27B
-* Last Modified : Mar. 24, 2025
+* Last Modified : Mar. 30, 2025
 * Acknowledgments : https://cplusplus.com/reference/cstdio/scanf/
 */
 
@@ -25,16 +25,6 @@ void displayMainMenu()
     printf("[2] ComPetDium\n");
     printf("[3] View Statistics\n");
     printf("[0] Exit\n");
-}
-
-// selectBattle placeholder
-
-// selectComPetDium placeholder
-
-// selectViewStatistics placeholder
-void selectViewStatistics ()
-{
-    printf(" -- View Statistics --\n");
 }
 
 /**
@@ -76,7 +66,7 @@ int main () {
 
             case 2: ComPetDium(); break;
 
-            case 3: selectViewStatistics(); break;
+            case 3: ViewStats(); break;
 
             case 0: selectExit(&quitflag); break;
 
